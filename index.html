@@ -1,26 +1,89 @@
 <!doctype html>
-<html lang="en">
 
-  <head>
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/jquery-2.2.2.js"></script>
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js"></script>
     <script src="js/rps.js"></script>
+
     <script type="text/javascript">
-      $(document).ready(function() {
-        $("#playerPickRock").click(function()
-          //call computer move function here
+            
+        $(document).ready(function() {
+
+        $("#playerPickRock").click(function() {
+            PlayerMoves("rock");
         });
-        $("#playerPickPaper").click(function()
-            //second comment  
+        $("#playerPickPaper").click(function() {
+            PlayerMoves("paper");
         });
-        $("#playerPickScissors").click(function()
-          
+        $("#playerPickScissors").click(function() {
+            PlayerMoves("scissors");
         });
+        
+        function PlayerMoves(move)
+        {
+            var sComputerMove = computerMove();
+            var theWinner = checkRound(move,sComputerMove);
+            $("#computerPick").val(sComputerMove);
+            $("#result").val(theWinner);
+            $("#score").val(updateScore(theWinner));
+            $("#topscore").val(topScore);
+        }
       });
     </script>
-  </head>
 
-  <body>
-    this is the body
-  <body>
-</html>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>computer pick</td>
+            <td>
+                <output id="computerPick" itemtype="text"></output>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>result</td>
+            <td>
+                <output id="result" itemtype="text"></output>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <button id='playerPickRock'> Rock </button>
+            </td>
+            <td>
+                <button id="playerPickPaper"> Paper </button>
+            </td>
+            <td>
+                <button id="playerPickScissors"> Scissors </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                score
+            </td>
+            <td>
+                <output id="score" itemtype="text"></output>
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                top score
+            </td>
+            <td>
+                <output id="topscore" itemtype="text"></output>
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+    </table>
+
+    <body>
+
+        </html>
